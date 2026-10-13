@@ -84,7 +84,7 @@ over the non-augmented baseline.
 
 Python, PyTorch, LightGBM, CatBoost, SHAP, pandas, NumPy
 
-## Also part of this project
+
 
 ## Also part of this project
 
@@ -95,9 +95,3 @@ Lovable, backed by Supabase) consumes these endpoints to give a
 fleet-level view: per-engine health and RUL, historical trends, a 
 maintenance planner, model registry status, and prediction explainability 
 — all maintained as separate private repos.
-
-## Note
-
-The raw C-MAPSS data files are not included here — download them from the 
-NASA Prognostics Data Repository and place them under `data/` before running 
-the pipeline in the order listed above.

@@ -1,0 +1,4 @@
+[
+  {"id":"a-1761118135866-warning","severity":"warning","title":"Temperature rising","message":"Unusual temp increase (+0.12).","created_at":1761118135.8668,"acknowledged":false},
+  {"id":"a-1761118135-warn","severity":"warning","title":"RUL getting low","message":"Estimated RUL 35.6 cycles (<40).","created_at":1761118135.8668,"acknowledged":false}
+]

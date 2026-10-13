@@ -1,0 +1,101 @@
+{
+  "openapi": "3.0.0",
+  "info": {"title": "CMAPSS RUL API (minimal)", "version": "1.0.0"},
+  "servers": [{"url": "http://127.0.0.1:8000"}],
+  "paths": {
+    "/predict_global_live": {
+      "get": {
+        "summary": "Live RUL",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {"application/json": {
+              "schema": {
+                "type":"object",
+                "properties":{
+                  "model":{"type":"string"},
+                  "fd_hint":{"type":"string"},
+                  "window":{"type":"integer"},
+                  "idx":{"type":"integer"},
+                  "predicted_rul":{"type":"number"},
+                  "trace":{"type":"array","items":{"type":"number"}},
+                  "ts":{"type":"number"}
+                },
+                "required":["model","fd_hint","window","idx","predicted_rul","trace","ts"]
+              }
+            }}
+          }
+        }
+      }
+    },
+    "/alerts": {
+      "get": {
+        "summary": "Latest alerts",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {"application/json": {
+              "schema": {
+                "type":"array",
+                "items":{
+                  "type":"object",
+                  "properties":{
+                    "id":{"type":"string"},
+                    "severity":{"type":"string"},
+                    "title":{"type":"string"},
+                    "message":{"type":"string"},
+                    "created_at":{"type":"number"},
+                    "acknowledged":{"type":"boolean"}
+                  }
+                }
+              }
+            }}
+          }
+        }
+      }
+    },
+    "/explain_global_live": {
+      "get": {
+        "summary": "XAI for current window",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {"application/json": {
+              "schema": {
+                "type":"object",
+                "properties":{
+                  "pred":{"type":"number"},
+                  "features":{"type":"array","items":{"type":"string"}},
+                  "feat_avg":{"type":"array","items":{"type":"number"}},
+                  "heatmap":{"type":"array","items":{"type":"number"}},
+                  "domain":{"type":"array","items":{"type":"number"}}
+                }
+              }
+            }}
+          }
+        }
+      }
+    },
+    "/metrics": {
+      "get": {
+        "summary": "Lightweight KPIs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {"application/json": {
+              "schema": {
+                "type":"object",
+                "properties":{
+                  "model":{"type":"string"},
+                  "last_latency_ms":{"type":"number"},
+                  "rul_trace_len":{"type":"integer"},
+                  "alerts":{"type":"integer"}
+                }
+              }
+            }}
+          }
+        }
+      }
+    }
+  }
+}
